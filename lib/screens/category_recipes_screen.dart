@@ -131,30 +131,30 @@ class _CategoryRecipesScreenState extends State<CategoryRecipesScreen> {
       favorites = screenRouteArgs['favoriteRecipes'];
       recipeFilters = screenRouteArgs['recipeFilters'];
 
-      final categoryRecipeDocSnapshotNestedList = Firestore.instance
-          .collection('categories')
-          .document(categoryDoc.documentID)
-          .collection('recipes')
-          .snapshots()
-          .where((recipeCollection) {
-        final recipeDocListWithPreferences =
-            recipeCollection.documents.where((recipeDoc) {
-          return (recipeDoc['filters']['isGlutenFree'] ==
-                  !recipeFilters['gluten']) &&
-              (recipeDoc['filters']['isLactoseFree'] ==
-                  !recipeFilters['lactose']) &&
-              (recipeDoc['filters']['isVegan'] == recipeFilters['vegan']) &&
-              (recipeDoc['filters']['isVegetarian'] ==
-                  recipeFilters['vegetarian']);
-        }).toList();
+      // final categoryRecipeDocSnapshotNestedList = Firestore.instance
+      //     .collection('categories')
+      //     .document(categoryDoc.documentID)
+      //     .collection('recipes')
+      //     .snapshots()
+      //     .where((recipeCollection) {
+      //   final recipeDocListWithPreferences =
+      //       recipeCollection.documents.where((recipeDoc) {
+      //     return (recipeDoc['filters']['isGlutenFree'] ==
+      //             !recipeFilters['gluten']) &&
+      //         (recipeDoc['filters']['isLactoseFree'] ==
+      //             !recipeFilters['lactose']) &&
+      //         (recipeDoc['filters']['isVegan'] == recipeFilters['vegan']) &&
+      //         (recipeDoc['filters']['isVegetarian'] ==
+      //             recipeFilters['vegetarian']);
+      //   }).toList();
 
-        if (recipeDocListWithPreferences.length > 0)
-          print('Found docs matching the preferences for the chosen category');
-        else
-          print('Docs don\'t match the preferences for the chosen category');
+      //   if (recipeDocListWithPreferences.length > 0)
+      //     print('Found docs matching the preferences for the chosen category');
+      //   else
+      //     print('Docs don\'t match the preferences for the chosen category');
 
-        return recipeDocListWithPreferences.length > 0;
-      }); //.map((recipeSnapshot){ return recipeSnapshot.documents;}).toList();
+      //   return recipeDocListWithPreferences.length > 0;
+      // }); //.map((recipeSnapshot){ return recipeSnapshot.documents;}).toList();
 
       // List<DocumentSnapshot> categoryRecipeDocList = [];
       // categoryRecipeDocSnapshotNestedList.then((recipeDocNestedList){

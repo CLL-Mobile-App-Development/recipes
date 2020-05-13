@@ -59,7 +59,7 @@ class _CategoryItemState extends State<CategoryItem> {
         child: Text(
           //widget.title,
           widget.categoryItemDocument['categoryTitle'],
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline6,
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(

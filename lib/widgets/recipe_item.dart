@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../screens/recipe_details_screen.dart';
 import '../models/recipe.dart';
 
 class RecipeItem extends StatelessWidget {

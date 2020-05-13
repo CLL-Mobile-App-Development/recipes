@@ -107,7 +107,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             child: Center(
               child: Text(
                 'Filter recipes to your liking !',
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
             ),
           ),

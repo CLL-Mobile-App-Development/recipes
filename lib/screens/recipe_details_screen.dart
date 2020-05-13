@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/recipe.dart';
 
-import '../data/real-data.dart';
 
 class RecipeDetailsScreen extends StatefulWidget {
   static const screenRouteName = '/recipe-details-screen';
@@ -33,7 +32,7 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
       BuildContext widgetContext, String containerTitle) {
     return Text(
       containerTitle,
-      style: Theme.of(widgetContext).textTheme.title,
+      style: Theme.of(widgetContext).textTheme.headline6,
     );
   }
 

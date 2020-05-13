@@ -49,7 +49,7 @@ class _ScrollableRecipeItemStreamRendererState
               child: ListTile(
                 leading: Text(
                   'Apply Preferences',
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 title: Switch(
                   value: applyRecipePreferences,

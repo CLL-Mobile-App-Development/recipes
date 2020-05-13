@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import './recipe_details_screen.dart';
 
-import '../widgets/recipe_item.dart';
 import '../widgets/scrollable_recipe_item_stream_renderer.dart';
 
 import '../models/recipe.dart';

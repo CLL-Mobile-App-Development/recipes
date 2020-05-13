@@ -9,7 +9,7 @@ The original app idea from the course has been extended to have a switch on each
 Different recipes in the app have been organized into multiple categories, as a recipe can be tagged under more than one category. Each recipe would have the list of ingredients, steps, along with an image of the final recipe. Users can also mark their favorite recipes with quick access through a dedicated *Favorites* tab.
 
 
-<img src="https://github.com/BODF-Mobile-App-Development/recipe-collection-app/blob/master/Recipe_App_Final_Gif.gif" alt="Recipe-Collection-App-Gif" width=500px height=875px/>
+<img src="https://github.com/CLL-Mobile-App-Development/recipes/blob/master/Recipe_App_Final_Gif.gif" alt="Recipe-Collection-App-Gif" width=500px height=875px/>
 
 
 ***

@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../models/category.dart';
 import '../models/recipe.dart';
-import '../data/real-data.dart';
 import '../widgets/category_item.dart';
 
 /*******************************************************************************
@@ -110,14 +108,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               return Center(
                 child: Text(
                   'Rendering recipe categories...',
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
               );
             } else if (snapshot.data.documents.length == 0) { // Similarly, if there is no data in the backend to render, display a message indicating the same.
               return Center(
                 child: Text(
                   'No recipe categories to display !',
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
               );
             } else {
