@@ -63,45 +63,6 @@ class _ScrollableRecipeItemStreamRendererState
             ),
             applyRecipePreferences
                 ? StreamBuilder(
-                    // stream: Firestore.instance
-                    //     .collection('categories')
-                    //     .document(categoryDoc.documentID)
-                    //     .collection('recipes')
-                    //     .snapshots()
-                    //     .where((recipeCollection) {
-                    //   var recipeDocListWithPreferences = [];
-
-                    //   if (recipeCollection == null ||
-                    //       recipeCollection.documents == null)
-                    //     return false;
-                    //   else {
-                    //     final recipeDocListRef = recipeCollection.documents;
-
-                    //     recipeDocListWithPreferences =
-                    //         recipeDocListRef.where((recipeDoc) {
-                    //       return (recipeDoc['filters']['isGlutenFree'] ==
-                    //               !recipeFilters['gluten']) &&
-                    //           (recipeDoc['filters']['isLactoseFree'] ==
-                    //               !recipeFilters['lactose']) &&
-                    //           (recipeDoc['filters']['isVegan'] ==
-                    //               recipeFilters['vegan']) &&
-                    //           (recipeDoc['filters']['isVegetarian'] ==
-                    //               recipeFilters['vegetarian']);
-                    //     }).toList();
-                    //   }
-
-                    //   bool foundRecipesMatchingPreferences =
-                    //       recipeDocListWithPreferences.length > 0;
-
-                    //   if (foundRecipesMatchingPreferences)
-                    //     print(
-                    //         'Found docs matching the preferences for the chosen category');
-                    //   else
-                    //     print(
-                    //         'Docs don\'t match the preferences for the chosen category');
-
-                    //   return foundRecipesMatchingPreferences;
-                    // }),
                     stream: widget.recipeQSnapshotStream,
                     builder: (context, snapshot) {
                       if (snapshot == null ||
@@ -189,37 +150,16 @@ class _ScrollableRecipeItemStreamRendererState
                               print(
                                   'Vegetarian: ${snapshot.data.documents[itemIndex]['filters']['isVegetarian']}');
 
-                              // if ((recipeFilters['gluten'] ==
-                              //         !selectedRecipes[itemIndex].isRecipeGlutenFree) &&
-                              //     (recipeFilters['lactose'] ==
-                              //         !selectedRecipes[itemIndex].isRecipeLactoseFree) &&
-                              //     (recipeFilters['vegan'] ==
-                              //         selectedRecipes[itemIndex].isRecipeVegan) &&
-                              //     (recipeFilters['vegetarian'] ==
-                              //         selectedRecipes[itemIndex].isRecipeVegetarian)) {
                               return RecipeItem(
-                                // recipeTitle: filteredRecipes[itemIndex].recipeTitle,
-                                // recipeId: filteredRecipes[itemIndex].recipeId,
-                                // imageUrl: filteredRecipes[itemIndex].recipeImageUrl,
-                                // cookingTime: filteredRecipes[itemIndex].cookingTime,
-                                // cookingComplexity: getCookingComplexityAsString(
-                                //     filteredRecipes[itemIndex].cookingComplexity),
-                                // recipeAffordability: getRecipeAffordabilityAsString(
-                                //     filteredRecipes[itemIndex].affordabilityOfRecipe),
                                 recipeDetailDoc:
-                                    //snapshot.data.documents[itemIndex],
                                     recipeDocListWithPreferences[itemIndex],
                                 loadRecipeDetailsOnTap: () =>
                                     widget.openRecipeDetailScreen(
                                         widgetContext,
-                                        //snapshot.data.documents[
-                                        //  itemIndex] /*filteredRecipes[itemIndex].recipeId*/),
                                         recipeDocListWithPreferences[
                                             itemIndex]),
                               );
-                              // } // end of if
                             },
-                            //itemCount: snapshot.data.documents.length,
                             itemCount: recipeDocListWithPreferences.length,
                             shrinkWrap: true,
                             controller: ScrollController(

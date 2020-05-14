@@ -17,9 +17,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
       true; // Initial value set to true, to allow the data sent by parent by parent screen to be loaded onlye once at widget creation.
   // That way, any settings changed by the user later can be retained and displayed on this screen page.
 
-  //Map<String, bool>
-    //  recipeFilterSettings; // Stores and maintains the user chosen recipe filter settings.
-
   // Recipe filter flags
   bool doesUserWantGluten = false;
   bool doesUserWantLactose = false;
@@ -134,7 +131,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
               'Filter',
               style: TextStyle(
                 fontFamily: 'RobotoCondensed',
-                //fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),

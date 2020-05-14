@@ -45,8 +45,6 @@ class LakshmisCookbook extends StatelessWidget {
               ),
             ),
       ),
-      //home: CategoriesScreen(),
-      //initialRoute: '/',
       routes: {
         '/' : (widgetContext) => TabsScreen(favorites: favoriteRecipes, filters: recipefilterSelections,), 
         CategoriesScreen.screenRouteName : (widgetContext) => CategoriesScreen(favorites: favoriteRecipes,filters: recipefilterSelections,),

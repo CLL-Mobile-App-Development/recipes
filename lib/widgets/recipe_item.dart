@@ -4,22 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/recipe.dart';
 
 class RecipeItem extends StatelessWidget {
-  // final String recipeTitle;
-  // final String recipeId;
-  // final String imageUrl;
-  // final int cookingTime;
-  // final String cookingComplexity;
-  // final String recipeAffordability;
   final DocumentSnapshot recipeDetailDoc;
   final Function loadRecipeDetailsOnTap;
 
   const RecipeItem({
-    // @required this.recipeTitle,
-    // @required this.recipeId,
-    // @required this.imageUrl,
-    // @required this.cookingTime,
-    // @required this.cookingComplexity,
-    // @required this.recipeAffordability,
     @required this.recipeDetailDoc,
     @required this.loadRecipeDetailsOnTap,
   });
@@ -64,7 +52,6 @@ String getCookingComplexityAsString(
   Widget build(BuildContext context) {
     return InkWell(
       onTap: loadRecipeDetailsOnTap,
-      //splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       child: Card(
         elevation: 10,
@@ -124,7 +111,6 @@ String getCookingComplexityAsString(
                       Text(
                         '${recipeDetailDoc['cookingTime']} mins',
                         style: TextStyle(
-                          //fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -137,7 +123,6 @@ String getCookingComplexityAsString(
                       Text(
                         getCookingComplexityAsString(CookingComplexity.values[recipeDetailDoc['recipeCookingComplexityIdx']]),
                         style: TextStyle(
-                          //fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -146,11 +131,9 @@ String getCookingComplexityAsString(
                   Row(
                     children: <Widget>[
                       Icon(Icons.attach_money),
-                      //SizedBox(width: 2),
                       Text(
                         getRecipeAffordabilityAsString(AffordabilityOfRecipe.values[recipeDetailDoc['recipeAffordabilityIdx']]),
                         style: TextStyle(
-                          //fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

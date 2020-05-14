@@ -23,8 +23,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
   // This flag is used to prevent data initialization each time the build method is run.
   Future<bool>
       isChosenRecipeAFavoriteFut; // Flag to signify the user-liking to the recipe.
-  //var isChosenRecipeAFavorite; // declared as var (variable), as FutureBuilder may or may not retrieve a bool.
-  // It can also return a null if there is no match.
   String matchingBackEndFavRecDocID =
       ""; // To store the document id of matching favorite recipe document in cloud firestore backend.
 
@@ -70,9 +68,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
   }
 
   Future<bool> isRecipeAFavorite() {
-    // return favorites.any((currFavRecipe) {
-    //   return currFavRecipe.recipeId == userChosenRecipe.recipeId;
-    // });
 
     return Firestore.instance
         .collection('users')
@@ -104,14 +99,7 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
           ModalRoute.of(context).settings.arguments as Map<String, Object>;
 
       recipeDoc = screenRouteArgs['recipeDoc'];
-      //recipeId = screenRouteArgs['recipeId'];
-      //favorites = screenRouteArgs['favorites'] as List<Recipe>;
       filters = screenRouteArgs['filters'] as Map<String, bool>;
-      // userChosenRecipe = DUMMY_RECIPES.firstWhere((recipe) {
-      //   return recipe.recipeId ==
-      //       recipeDoc['recipeId']; // test returning a bool for each recipe. First recipe passing the test will be
-      //   // returned by the firstWhere method.
-      // });
 
       isInitialScreenLoad =
           false; // To prevent data initialization with the next widget re-paint on state change.
@@ -122,20 +110,9 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
 
   // Function to add/remove the chosen recipe to/from the favorites list of recipes
   void switchStateOfRecipeAsFavorite() {
-    // Commented out setState() as Firestore data write automatically triggers a widget rebuild.
-    //setState((){
-
-    // var matchingFavRecDoc; // declared as variable to account for null or valid DocumentSnatshot retrieved from the Future<DocumentSnapshot>
-
-    // // Widget returned by FutureBuilder is discarded. only purpose to extract value from future.
-    // FutureBuilder(future: getMatchingFavRecDoc(widgetCxt), builder: (widgetCxt, favRecDocSnapshot){
-    //      matchingFavRecDoc = favRecDocSnapshot.data as DocumentSnapshot;
-    //      return Text("");
-    // });
 
     if (matchingBackEndFavRecDocID == "") {
       // not a favorite
-      //favorites.remove(userChosenRecipe);
       print(
           'Retrieved FavRecDoc is null, recipe ${recipeDoc['title']} is not a favorite');
       Firestore.instance
@@ -190,7 +167,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          //userChosenRecipe.recipeTitle,
           recipeDoc['title'],
         ),
       ),
@@ -198,7 +174,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
         child: Column(
           children: <Widget>[
             Image.network(
-              //userChosenRecipe.recipeImageUrl,
               recipeDoc['imageUrl'],
               height: 250,
               width: double.infinity,
@@ -218,8 +193,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
                         horizontal: 10,
                       ),
                       child: Text(
-                        //'${userChosenRecipe.recipeIngredients[itemIndex]}',
-                        //recIngredients[itemIndex],// as String,
                         recipeDoc['ingredients'][itemIndex],
                       ),
                     ),
@@ -228,8 +201,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
                     margin: EdgeInsets.all(6),
                   );
                 },
-                //itemCount: userChosenRecipe.recipeIngredients.length,
-                //itemCount: recIngredients.length
                 itemCount: recipeDoc['ingredients'].length,
               ),
             ),
@@ -253,8 +224,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
                             horizontal: 10,
                           ),
                           child: Text(
-                            //'${userChosenRecipe.recipeSteps[itemIndex]}',
-                            //recSteps[itemIndex],// as String,
                             recipeDoc['steps'][itemIndex],
                           ),
                         ),
@@ -263,8 +232,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
                     ],
                   );
                 },
-                //itemCount: userChosenRecipe.recipeSteps.length,
-                //itemCount: recSteps.length,
                 itemCount: recipeDoc['steps'].length,
               ),
             ), // end of buildContainerWithTitleAndList
@@ -297,12 +264,10 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
                     'FavRec Future<bool> returned $isChosenRecipeAFavorite of type ${isChosenRecipeAFavorite.runtimeType}, recipe ${recipeDoc['title']} is a favorite');
                 return Icon(
                   Icons.star,
-                  //color: Colors.red,
                 );
               }
             }), //isChosenRecipeAFavorite
         onPressed: switchStateOfRecipeAsFavorite,
-        //backgroundColor: Colors.white.withOpacity(0.7),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );

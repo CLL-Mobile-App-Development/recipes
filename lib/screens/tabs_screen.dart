@@ -84,31 +84,11 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return /*DefaultTabController( // Flutter automatically wires-up the TabBar in the bottom of appBar and TabBarView in the body
-                                 // to the DefaultTabController.
-      length: 2,
-      child: */
-        Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: (_currentTabIndex == 0)
             ? Text('Lakshmi\'s Cookbook - Categories')
             : Text('Lakshmi\'s Cookbook - Favorites'),
-        // bottom: TabBar(
-        //   tabs: <Widget>[
-        //     Tab(
-        //       icon: Icon(
-        //         Icons.category,
-        //       ),
-        //       text: 'Categories',
-        //     ),
-        //     Tab(
-        //       icon: Icon(
-        //         Icons.star,
-        //       ),
-        //       text: 'Favorites',
-        //     ),
-        //   ],
-        // ),
       ),
       drawer: SideDrawer(
         recipeSelectionFilters: widget.filters,
@@ -141,14 +121,6 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
         ],
       ),
-      // body: TabBarView(
-      //   children: <Widget>[
-      //     // Order of widgets in this list should correspond to the order of Tab widgets in TabBar on appBar
-      //     CategoriesScreen(),
-      //     FavoritesScreen(),
-      //   ],
-      // ),
     );
-    //);
   }
 }
